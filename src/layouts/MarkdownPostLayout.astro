@@ -1,0 +1,23 @@
+---
+import Posts from "../components/LinksPosts.astro";
+const { frontmatter } = Astro.props;
+import BaseLayout from "./BaseLayout.astro";
+---
+<BaseLayout pageTitle={frontmatter.title}>
+<h1>{frontmatter.title}</h1>
+<p>Publicado el: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+<p>Escrito por {frontmatter.author}</p>
+<p>{frontmatter.description.toString()}</p>
+
+<img
+  src={frontmatter.image.url}
+  alt="Imagensita"
+  width="50%"
+  height={frontmatter.image.altura.toString() + "px"}
+  style="
+background:black"
+/>
+<slot />
+
+<!-- <Posts /> -->
+</BaseLayout>
